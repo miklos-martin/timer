@@ -1,12 +1,9 @@
 package hu.onend.timer;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,7 +37,7 @@ public class TimerActivity extends ActionBarActivity implements ActionBar.OnNavi
                         actionBar.getThemedContext(),
                         android.R.layout.simple_list_item_1,
                         android.R.id.text1,
-                        new String[] {
+                        new String[]{
                                 getString(R.string.title_section1),
                                 getString(R.string.title_section2),
                                 getString(R.string.title_section3),
@@ -64,10 +61,9 @@ public class TimerActivity extends ActionBarActivity implements ActionBar.OnNavi
                 getSupportActionBar().getSelectedNavigationIndex());
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.timer, menu);
         return true;
@@ -99,6 +95,7 @@ public class TimerActivity extends ActionBarActivity implements ActionBar.OnNavi
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -122,12 +119,11 @@ public class TimerActivity extends ActionBarActivity implements ActionBar.OnNavi
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_timer, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }
-
 }

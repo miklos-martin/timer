@@ -28,6 +28,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    sourceSets {
+        instrumentTest.setRoot('tests')
+        instrumentTest.java.srcDirs = ['tests/src/main/java']
+    }
 }
 
 dependencies {

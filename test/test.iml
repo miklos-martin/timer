@@ -17,7 +17,7 @@
     </facet>
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
-        <option name="GRADLE_PROJECT_PATH" value=":app" />
+        <option name="GRADLE_PROJECT_PATH" value=":test" />
       </configuration>
     </facet>
   </component>
@@ -49,13 +49,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/assets" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/src/main/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/jni" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/tests/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/assets" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/build/apk" />
       <excludeFolder url="file://$MODULE_DIR$/build/assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/bundles" />

@@ -44,6 +44,16 @@ abstract public class AbstractTimerTest {
         assertTrue(timer.isOver());
     }
 
+    @Test(expected = RuntimeException.class)
+    public void testTickThrowsException() {
+        for (int i = 0; i < 5; i++) {
+            timer.tick();
+        }
+
+        assertTrue(timer.isOver());
+        timer.tick();
+    }
+
     @Test
     public void testReset() {
         assertFalse(timer.isOver());

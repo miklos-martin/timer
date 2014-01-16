@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 @Ignore
 abstract public class AbstractTimerTest {
 
-    private Timer timer;
+    protected Timer timer;
 
     @Before
     public void setUp() {
@@ -45,41 +45,28 @@ abstract public class AbstractTimerTest {
     }
 
     @Test
-    public void testGetCurrentTime() {
-        int current = 5;
-
-        for (int i = 0; i < 5; i++) {
-            assertEquals(current, timer.getCurrentTime());
-            timer.tick();
-            current--;
-        }
-    }
-
-    @Test
     public void testReset() {
-        assertEquals(5, timer.getCurrentTime());
         assertFalse(timer.isOver());
 
         for (int i = 0; i < 5; i++) {
             timer.tick();
         }
 
-        assertEquals(0, timer.getCurrentTime());
         assertTrue(timer.isOver());
 
         timer.reset();
-        assertEquals(5, timer.getCurrentTime());
         assertFalse(timer.isOver());
     }
 
     @Test
     public void testGetTotalTime() {
-        assertEquals(5, timer.getCurrentTime());
         assertEquals(5, timer.getTotalTime());
 
         timer.tick();
 
-        assertEquals(4, timer.getCurrentTime());
         assertEquals(5, timer.getTotalTime());
     }
+
+    @Test
+    public abstract void testGetCurrentTime();
 }

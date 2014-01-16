@@ -18,7 +18,7 @@ public interface Timer {
     /**
      * Ticks the timer
      */
-    public void tick();
+    public void tick() throws RuntimeException;
 
     /**
      * Returns the getCurrentTime seconds, where the timer is at

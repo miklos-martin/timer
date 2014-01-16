@@ -8,7 +8,7 @@ public class Interval implements Timer {
     private long seconds;
     private long current;
 
-    public Interval( long seconds ) {
+    public Interval(long seconds) {
         this.seconds = seconds;
         reset();
     }
@@ -24,7 +24,10 @@ public class Interval implements Timer {
     }
 
     @Override
-    public void tick() {
+    public void tick() throws RuntimeException {
+        if (isOver())
+            throw new RuntimeException("Can not call tick() on an expired Timer");
+
         --current;
     }
 

@@ -1,9 +1,11 @@
 package hu.onend.timer.model;
 
+import java.io.Serializable;
+
 /**
  * Timer interface
  */
-public interface Timer {
+public interface Timer extends Serializable {
 
     /**
      * Returns the total time

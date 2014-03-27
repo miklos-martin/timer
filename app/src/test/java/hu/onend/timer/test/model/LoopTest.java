@@ -8,8 +8,9 @@ import hu.onend.timer.model.Loop;
 import hu.onend.timer.model.Timer;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
-public class LoopTest extends AbstractTimerTest {
+public class LoopTest extends AbstractChainedTimerTest {
 
     @Override
     protected Timer createTimer() {
@@ -18,6 +19,18 @@ public class LoopTest extends AbstractTimerTest {
         loop.setLaps(5);
 
         return loop;
+    }
+
+    @Override
+    public void testTick() {
+        assertEquals(0, chainedTimers.size());
+        super.testTick();
+        assertEquals(5, chainedTimers.size());
+
+        for (Timer internalTimer : chainedTimers) {
+            assertTrue(internalTimer instanceof Interval);
+            assertEquals(1, internalTimer.getTotalTime());
+        }
     }
 
     @Override

@@ -8,7 +8,7 @@ import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class TimerChainTest extends AbstractTimerTest {
+public class TimerChainTest extends AbstractChainedTimerTest {
 
     @Override
     protected Timer createTimer() {
@@ -18,6 +18,18 @@ public class TimerChainTest extends AbstractTimerTest {
         timer.add(new Interval(1));
 
         return timer;
+    }
+
+    @Override
+    public void testTick() {
+        assertEquals(0, chainedTimers.size());
+        super.testTick();
+        assertEquals(3, chainedTimers.size());
+
+        // As we put them in above
+        assertEquals(2, chainedTimers.get(0).getTotalTime());
+        assertEquals(2, chainedTimers.get(1).getTotalTime());
+        assertEquals(1, chainedTimers.get(2).getTotalTime());
     }
 
     @Override

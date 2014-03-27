@@ -3,7 +3,7 @@ package hu.onend.timer.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TimerChain extends AbstractTimer {
+public class TimerChain extends AbstractChainedTimer {
 
     protected List<Timer> elements;
 
@@ -45,8 +45,12 @@ public class TimerChain extends AbstractTimer {
 
         Timer current = getCurrentElement();
         current.tick();
-        if (current.isOver())
+        if (current.isOver()) {
+            if (chainedTimerIsOverListener != null)
+                chainedTimerIsOverListener.onChainedTimerIsOver(current);
+
             next();
+        }
 
         if (isOverListener != null && isOver())
             isOverListener.onTimerIsOver(this);

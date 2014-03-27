@@ -3,7 +3,7 @@ package hu.onend.timer.model;
 /**
  * Simple interval timer
  */
-public class Interval implements Timer {
+public class Interval extends AbstractTimer {
 
     private long seconds;
     private long current;
@@ -29,6 +29,9 @@ public class Interval implements Timer {
             throw new RuntimeException("Can not call tick() on an expired Timer");
 
         --current;
+
+        if (isOverListener != null && isOver())
+            isOverListener.onTimerIsOver(this);
     }
 
     @Override

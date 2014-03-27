@@ -14,13 +14,21 @@ import static org.junit.Assert.assertTrue;
  * Base test case of all Timer implementations
  */
 @Ignore
-abstract public class AbstractTimerTest {
+abstract public class AbstractTimerTest implements Timer.OnTimerIsOverListener {
 
     protected Timer timer;
+    protected int timerIsOverCalledTimes = 0;
 
     @Before
     public void setUp() {
         timer = createTimer();
+        timer.setOnTimerIsOverListener(this);
+        timerIsOverCalledTimes = 0;
+    }
+
+    @Override
+    public void onTimerIsOver(Timer timer) {
+        timerIsOverCalledTimes++;
     }
 
     /**
@@ -36,12 +44,14 @@ abstract public class AbstractTimerTest {
     @Test
     public void testTick() {
         assertFalse(timer.isOver());
+        assertEquals(0, timerIsOverCalledTimes);
 
         for (int i = 0; i < 5; i++) {
             timer.tick();
         }
 
         assertTrue(timer.isOver());
+        assertEquals(1, timerIsOverCalledTimes);
     }
 
     @Test(expected = RuntimeException.class)

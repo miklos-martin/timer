@@ -31,4 +31,15 @@ public interface Timer extends Serializable {
      * Resets the timer
      */
     public void reset();
+
+    /**
+     * Sets the isOverListener
+     *
+     * @param listener
+     */
+    public void setOnTimerIsOverListener(OnTimerIsOverListener listener);
+
+    public interface OnTimerIsOverListener {
+        public void onTimerIsOver(Timer timer);
+    }
 }

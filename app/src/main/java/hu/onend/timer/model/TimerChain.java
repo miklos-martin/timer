@@ -3,7 +3,7 @@ package hu.onend.timer.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TimerChain implements Timer {
+public class TimerChain extends AbstractTimer {
 
     protected List<Timer> elements;
 
@@ -47,6 +47,9 @@ public class TimerChain implements Timer {
         current.tick();
         if (current.isOver())
             next();
+
+        if (isOverListener != null && isOver())
+            isOverListener.onTimerIsOver(this);
     }
 
     @Override
